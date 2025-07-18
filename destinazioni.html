@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Destinazioni</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- FontAwesome -->
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+  <style>
+
+    h2 {
+      text-align: center;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      height: 240px;
+      background-image: url(images/sfondo-destinazione.jpg);
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+    }
+
+    .sfondoFigo {
+      text-align: center;
+      color: red;
+      font-size: larger;
+    }
+
+    .main-section {
+      padding: 30px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .destinazioni {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      padding: 20px;
+    }
+
+    .destinazione {
+      flex: 1 1 calc(33.333% - 20px);
+      max-width: calc(33.333% - 20px);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      text-align: center;
+      font-size: 14px;
+      color: #333;
+      transition: transform 0.2s;
+    }
+
+    .destinazione:hover {
+      transform: scale(1.05);
+    }
+
+    .destinazione img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary"
+      style="
+        background-color: #0487e4 !important;
+        position: sticky;
+        width: 100%;
+        z-index: 1000;
+      "
+      data-bs-theme="light"
+    >
+      <div class="container-fluid">
+        <img
+          src="images/logoNew.png"
+          alt="logo"
+          width="50"
+          height="50"
+          style="background: transparent"
+        />
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link text-white" href="home.html">Home</a>
+            <a class="nav-link text-white" href="Chi-Siamo.html">Chi siamo</a>
+            <a
+              class="nav-link active text-white"
+              aria-current="page"
+              href="Pacchetti-Viaggio.html"
+              >Pacchetti Viaggi</a
+            >
+            <a class="nav-link text-white" href="Offerte.html">Offerte</a>
+            <a class="nav-link text-white" href="destinazioni.html"
+              >Destinazioni</a
+            >
+            <a class="nav-link text-white" href="Preventivatore.html"
+              >Preventivatore</a
+            >
+            <a class="nav-link text-white" href="Contatti.html">Contatti</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  <!-- Header -->
+  <div class=" header">
+    <div class="sfondoFigo">
+      <h1>NapoletanGo</h1>
+    </div>
+  </div>
+
+  <!-- Sezione principale -->
+  <div class="main-section">
+    <h2>Le mete più amate</h2>
+    <div id="carousel1" class="carousel slide" data-bs-ride="false">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="destinazioni">
+            <div class="destinazione"><img src="images/napoli-notte-hd-1600x600.jpg" alt="Napoli" />
+              <h5>Napoli</h5>
+            </div>
+            <div class="destinazione"><img src="images/Sorrento-1.jpeg" alt="Sorrento" />
+              <h5>Sorrento</h5>
+            </div>
+            <div class="destinazione"><img src="images/caserta.webp" alt="Caserta" />
+              <h5>Caserta</h5>
+            </div>
+            <div class="destinazione"><img src="images/pompei-città.avif" alt="Pompei" />
+              <h5>Pompei</h5>
+            </div>
+            <div class="destinazione"><img src="images/capri-città.jpg" alt="Capri" />
+              <h5>Capri</h5>
+            </div>
+            <div class="destinazione"><img src="images/positano.JPG" alt="Positano" />
+              <h5>Positano</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel1" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel1" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+
+    <!-- Seconda sezione -->
+    <h2 class="mt-5">Scopri anche:</h2>
+    <div id="carousel2" class="carousel slide" data-bs-ride="false">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="destinazioni">
+            <div class="destinazione"><img src="images/destinazione-card-avellino.jpg" alt="Avellino" />
+              <h5>Avellino</h5>
+            </div>
+            <div class="destinazione"><img src="images/destinazione-card-ischia.jpg" alt="Ischia" />
+              <h5>Ischia</h5>
+            </div>
+            <div class="destinazione"><img src="images/destinazione-card-benevento.jpg" alt="Benevento" />
+              <h5>Benevento</h5>
+            </div>
+            <div class="destinazione"><img src="images/destinazione-card-salerno.jpg" alt="Salerno" />
+              <h5>Salerno</h5>
+            </div>
+            <div class="destinazione"><img src="images/destinazione-card-cilento.jpg" alt="Cilento" />
+              <h5>Cilento</h5>
+            </div>
+            <div class="destinazione"><img src="images/destinazione-card-paestum.jpeg" alt="Paestum" />
+              <h5>Paestum</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel2" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+    <footer class="text-white pt-5 pb-4" style="background-color: #0487e4">
+      <div class="container">
+        <div class="row">
+          <!-- Link utili -->
+          <div class="col-md-4 mb-4">
+            <h5>Link Utili</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="FAQ.html" class="text-white text-decoration-none">FAQ</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >Termini e Condizioni</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="col-md-4 mb-4">
+            <h5>Iscriviti alla Newsletter</h5>
+            <form class="d-flex flex-column flex-sm-row">
+              <input
+                type="email"
+                class="form-control me-sm-2 mb-2 mb-sm-0"
+                placeholder="La tua email"
+              />
+              <button class="btn btn-light" type="submit">Invia</button>
+            </form>
+          </div>
+
+          <!-- Social media -->
+          <div class="col-md-4 mb-4">
+            <h5>Seguici</h5>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" class="text-white fs-5"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+        <!-- Sezione vuota o da rimuovere -->
+        <div>
+          <div class="row">
+            <div class="col-12 text-center mt-3"></div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center mt-4 border-top pt-3">
+          <small>© 2025 Agenzia Viaggi. Tutti i diritti riservati.</small>
+        </div>
+      </div>
+    </footer>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

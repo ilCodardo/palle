@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Offerte</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- FontAwesome -->
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Stili -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Stili per il contenitore dell'immagine di sfondo principale */
+      .imageContainer {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+        overflow: hidden;
+      }
+
+      /* Stili per l'immagine di sfondo all'interno del contenitore */
+      .imageContainer img.sfondo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Stili per l'overlay scuro sopra l'immagine di sfondo */
+      .imageContainer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+
+      /* Stili per il testo "Chi siamo" sovrapposto all'immagine di sfondo */
+      .textImg {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        z-index: 2;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: red;
+      }
+
+      .titoloRiga {
+        text-align: center;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        font-weight: bold;
+        color: #d11418;
+      }
+
+      h3 {
+        color: #0487e4;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary"
+      style="
+        background-color: #0487e4 !important;
+        position: sticky;
+        width: 100%;
+        z-index: 1000;
+      "
+      data-bs-theme="light"
+    >
+      <div class="container-fluid">
+        <img
+          src="images/logoNew.png"
+          alt="logo"
+          width="50"
+          height="50"
+          style="background: transparent"
+        />
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link text-white" href="home.html">Home</a>
+            <a class="nav-link text-white" href="Chi-Siamo.html">Chi siamo</a>
+            <a
+              class="nav-link active text-white"
+              aria-current="page"
+              href="Pacchetti-Viaggio.html"
+              >Pacchetti Viaggi</a
+            >
+            <a class="nav-link text-white" href="Offerte.html">Offerte</a>
+            <a class="nav-link text-white" href="destinazioni.html"
+              >Destinazioni</a
+            >
+            <a class="nav-link text-white" href="Preventivatore.html"
+              >Preventivatore</a
+            >
+            <a class="nav-link text-white" href="Contatti.html">Contatti</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Intestazione con immagine e titolo della pagina -->
+    <div class="imageContainer">
+      <img
+        class="sfondo"
+        src="images/soldi-risparmiati.jpg"
+        alt="golfo del napoli"
+      />
+      <h1 class="textImg">Offerte</h1>
+    </div>
+
+    <!--HOME-->
+    <div class="container py-4 mb-2">
+      <h1 class="text-center mb-4">Offerte di questa settimana</h1>
+
+      <div class="row" style="display: flex; justify-content: center">
+        <!-- Pacchetto 1 Sorrento -->
+        <div class="col-md-6 mb-6">
+          <div class="card h-100">
+            <!-- CONTENITORE IMMAGINE -->
+            <div class="position-relative">
+              <img
+                src="images/Sorrento-1.jpeg"
+                class="card-img-top"
+                alt="Sorrento"
+              />
+              <span class="badge bg-danger position-absolute top-0 end-0 m-2">
+                <p style="text-decoration: line-through; display: inline">
+                  1800€
+                </p>
+                €1500
+              </span>
+              <button
+                class="btn btn-primary position-absolute top-50 start-50 translate-middle sfondofoto"
+                data-bs-toggle="modal"
+                data-bs-target="#modalMaldive"
+              >
+                Dettagli
+              </button>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Sorrento</h5>
+              <p class="card-text">
+                7 notti in resort 4 stelle, all inclusive.
+              </p>
+              <p><strong>Prezzo:</strong> €1800</p>
+              <p><strong>Durata:</strong> 7 giorni</p>
+              <p class="rating">★★★★★</p>
+            </div>
+          </div>
+        </div>
+        <!-- Potresti aggiungere altri pacchetti qui -->
+      </div>
+      <!-- Chiude la riga row -->
+    </div>
+    <!-- Chiude il contenitore principale -->
+
+    <!-- Footer -->
+    <footer class="text-white pt-5 pb-4" style="background-color: #0487e4">
+      <div class="container">
+        <div class="row">
+          <!-- Link utili -->
+          <div class="col-md-4 mb-4">
+            <h5>Link Utili</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="FAQ.html" class="text-white text-decoration-none">FAQ</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >Termini e Condizioni</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="col-md-4 mb-4">
+            <h5>Iscriviti alla Newsletter</h5>
+            <form class="d-flex flex-column flex-sm-row">
+              <input
+                type="email"
+                class="form-control me-sm-2 mb-2 mb-sm-0"
+                placeholder="La tua email"
+              />
+              <button class="btn btn-light" type="submit">Invia</button>
+            </form>
+          </div>
+
+          <!-- Social media -->
+          <div class="col-md-4 mb-4">
+            <h5>Seguici</h5>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" class="text-white fs-5"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+        <!-- Sezione vuota o da rimuovere -->
+        <div>
+          <div class="row">
+            <div class="col-12 text-center mt-3"></div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center mt-4 border-top pt-3">
+          <small>© 2025 Agenzia Viaggi. Tutti i diritti riservati.</small>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

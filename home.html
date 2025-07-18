@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home page</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- FontAwesome -->
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Stili -->
+    <style>
+      .body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .sfondo {
+        display: block;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 2rem;
+        border-radius: 10px;
+      }
+
+      .salebt {
+        margin-bottom: 10px;
+      }
+
+      /* CAROSELLO */
+      .carousel-container {
+        padding: 1rem;
+      }
+
+      .carousel-inner {
+        border-radius: 1.5rem;
+        overflow: hidden;
+      }
+
+      .carousel-item img {
+        height: 450px; /* altezza uniforme */
+        object-fit: cover;
+        width: 100%;
+        border-radius: 1rem; /* bordi rotondi */
+        filter: brightness(70%);
+        transition: transform 0.4s ease;
+        margin: auto;
+        position: relative;
+      }
+
+      .carousel-item img:hover {
+        transform: scale(1.02);
+      }
+
+      .carousel-caption {
+        background-color: rgba(0, 0, 0, 0.6); /* sfondo più scuro */
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+        color: #fff;
+        text-shadow: 1px 1px 3px #000;
+      }
+
+      /* Badge prezzo nel carosello */
+      .badge-prezzo {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 10;
+      }
+    </style>
+  </head>
+
+  <body>
+     <!-- NAVBAR -->
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary"
+      style="
+        background-color: #0487e4 !important;
+        position: sticky;
+        width: 100%;
+        z-index: 1000;
+      "
+      data-bs-theme="light"
+    >
+      <div class="container-fluid">
+        <img
+          src="images/logoNew.png"
+          alt="logo"
+          width="50"
+          height="50"
+          style="background: transparent"
+        />
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link text-white" href="home.html">Home</a>
+            <a class="nav-link text-white" href="Chi-Siamo.html">Chi siamo</a>
+            <a
+              class="nav-link active text-white"
+              aria-current="page"
+              href="Pacchetti-Viaggio.html"
+              >Pacchetti Viaggi</a
+            >
+            <a class="nav-link text-white" href="Offerte.html">Offerte</a>
+            <a class="nav-link text-white" href="destinazioni.html"
+              >Destinazioni</a
+            >
+            <a class="nav-link text-white" href="Preventivatore.html"
+              >Preventivatore</a
+            >
+            <a class="nav-link text-white" href="Contatti.html">Contatti</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header
+      class="hero-section d-flex align-items-center text-white"
+      style="
+        background-image: url('images/spacca-napoli.webp');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+      "
+    >
+      <div class="container text-center sfondo">
+        <h1 class="display-4 fw-bold">Scopri il viaggio dei tuoi sogni</h1>
+        <h2 class="lead mb-5">
+          Destinazioni indimenticabili, offerte esclusive e avventure su misura
+          per te
+        </h2>
+        <a href="Offerte.html" class="btn btn-light btn-lg me-3 salebt"
+          >Esplora le Offerte</a
+        >
+        <a href="Preventivatore.html" class="btn btn-primary btn-lg salebt"
+          >Richiedi Preventivo</a
+        >
+      </div>
+    </header>
+
+    <!-- Carosello immagini -->
+    <div class="container my-5">
+      <div
+        id="carouselExampleCaptions"
+        class="carousel slide rounded-4 overflow-hidden shadow-lg"
+        data-bs-ride="carousel"
+      >
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <!-- Slides -->
+        <div class="carousel-inner">
+          <!-- Prima slide -->
+          <div class="carousel-item active position-relative">
+            <img
+              src="images/pompei-città.avif"
+              class="d-block w-100"
+              alt="Città di Pompei"
+            />
+            <!-- Banner prezzo -->
+            <div
+              class="badge-prezzo bg-primary text-white px-3 py-1 m-3 rounded"
+            >
+              A Partire Da 300€ a Notte!
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Pompei</h5>
+              <p>Esplora Pompei, un sito archeologico unico al mondo.</p>
+            </div>
+          </div>
+          <!-- Seconda slide -->
+          <div class="carousel-item position-relative">
+            <img
+              src="images/napoli-notte-hd-1600x600.jpg"
+              class="d-block w-100"
+              alt="Napoli di notte"
+            />
+            <div
+              class="badge-prezzo bg-primary text-white px-3 py-1 m-3 rounded"
+            >
+              A Partire Da 450€ a Notte!
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Napoli</h5>
+              <p>Scopri la magia di Napoli, tra arte, mare e tradizione.</p>
+            </div>
+          </div>
+          <!-- Terza slide -->
+          <div class="carousel-item position-relative">
+            <img
+              src="images/capri-città.jpg"
+              class="d-block w-100"
+              alt="capri-città"
+            />
+            <div
+              class="badge-prezzo bg-primary text-white px-3 py-1 m-3 rounded"
+            >
+              A Partire Da 580€ a Notte!
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Capri</h5>
+              <p>
+                Relax e bellezza senza tempo sull’isola più elegante del
+                Mediterraneo.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Chiude carousel-inner -->
+
+        <!-- Controlli -->
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <!-- Chiude carousel -->
+    </div>
+    <!-- Chiude container -->
+
+    <!-- Bottone -->
+    <div class="text-center my-5">
+      <a href="destinazioni.html" class="btn btn-outline-primary btn-lg">
+        <i class="fas fa-map-marked-alt me-2"></i>
+        Scopri tutte le destinazioni
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-white pt-5 pb-4" style="background-color: #0487e4">
+      <div class="container">
+        <div class="row">
+          <!-- Link utili -->
+          <div class="col-md-4 mb-4">
+            <h5>Link Utili</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="FAQ.html" class="text-white text-decoration-none">FAQ</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >Termini e Condizioni</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="col-md-4 mb-4">
+            <h5>Iscriviti alla Newsletter</h5>
+            <form class="d-flex flex-column flex-sm-row">
+              <input
+                type="email"
+                class="form-control me-sm-2 mb-2 mb-sm-0"
+                placeholder="La tua email"
+              />
+              <button class="btn btn-light" type="submit">Invia</button>
+            </form>
+          </div>
+
+          <!-- Social media -->
+          <div class="col-md-4 mb-4">
+            <h5>Seguici</h5>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" class="text-white fs-5"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+        <!-- Sezione vuota o da rimuovere -->
+        <div>
+          <div class="row">
+            <div class="col-12 text-center mt-3"></div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center mt-4 border-top pt-3">
+          <small>© 2025 Agenzia Viaggi. Tutti i diritti riservati.</small>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

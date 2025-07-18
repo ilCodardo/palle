@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Preventivatore</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- FontAwesome -->
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+         display: flex;
+        flex-direction: column;
+      }
+
+
+      footer {
+        background-color: #0487e4;
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 100%;
+        background-image: url("images/vomero-napoli.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .sopra:hover {
+        background-color: #0d6efd; /* Colore primario di Bootstrap */
+        color: white;
+        border: none;
+      }
+    </style>
+  </head>
+
+  <body>
+     <!-- NAVBAR -->
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary"
+      style="
+        background-color: #0487e4 !important;
+        position: sticky;
+        width: 100%;
+        z-index: 1000;
+      "
+      data-bs-theme="light"
+    >
+      <div class="container-fluid">
+        <img
+          src="images/logoNew.png"
+          alt="logo"
+          width="50"
+          height="50"
+          style="background: transparent"
+        />
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link text-white" href="home.html">Home</a>
+            <a class="nav-link text-white" href="Chi-Siamo.html">Chi siamo</a>
+            <a
+              class="nav-link active text-white"
+              aria-current="page"
+              href="Pacchetti-Viaggio.html"
+              >Pacchetti Viaggi</a
+            >
+            <a class="nav-link text-white" href="Offerte.html">Offerte</a>
+            <a class="nav-link text-white" href="destinazioni.html"
+              >Destinazioni</a
+            >
+            <a class="nav-link text-white" href="Preventivatore.html"
+              >Preventivatore</a
+            >
+            <a class="nav-link text-white" href="Contatti.html">Contatti</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contenuto -->
+      <div class="container-fluid px-0">
+        <div
+          class="hero-image d-flex flex-column justify-content-center align-items-center text-white text-center mt-0"
+        >
+          <div
+            class="bg-dark bg-opacity-50 p-4 rounded mt-3 mb-3"
+            style="max-width: 600px; width: 100%"
+          >
+            <h1 style="color: red" class="fw-bold mb-4">Preventivo Viaggio</h1>
+            <div class="mb-3 text-start">
+              <label for="meta" class="form-label"
+                >Scegli la destinazione</label
+              >
+              <select class="form-select" id="meta" required>
+                <option value="">Seleziona...</option>
+                <option value="Sorrento">Sorrento 257€/notte</option>
+                <option value="Napoli">Napoli 150€/notte</option>
+                <option value="Caserta">Caserta 290€/notte</option>
+                <option value="Capri">Capri 583€/notte</option>
+                <option value="Positano">Positano 243€/notte</option>
+                <option value="Avellino">Avellino 96€/notte</option>
+                <option value="ischia">Ischia 295€/notte</option>
+                <option value="Benevento">Benevento 100€/notte</option>
+                <option value="Salerno">Salerno 150€/notte</option>
+                <option value="Cilento">Cilento 150€/notte</option>
+                <option value="Paestum">Paestum 120€/notte</option>
+              </select>
+            </div>
+            <div class="mb-3 text-start">
+              <label for="giorni" class="form-label">Numero di giorni</label>
+              <input
+                type="number"
+                class="form-control"
+                id="giorni"
+                min="1"
+                max="30"
+                required
+                placeholder="Es. 7"
+              />
+            </div>
+            <div class="mb-3 text-start">
+              <label for="persone" class="form-label">Numero persone</label>
+              <input
+                type="number"
+                class="form-control"
+                id="persone"
+                min="1"
+                placeholder="Es. 2"
+                required
+              />
+            </div>
+            <button
+              onclick="calcolaPreventivo()"
+              class="sopra btn btn-light w-100 mt-4"
+            >
+              Calcola Preventivo
+            </button>
+
+            <button onclick="gameLoop()" class="sopra btn btn-light w-100 mt-4">
+              CODICE SCONTO
+            </button>
+          </div>
+        </div>
+      </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="preventivoModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Preventivo</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Chiudi"
+            ></button>
+          </div>
+          <div class="modal-body" id="corpoModal">
+            <!-- Preventivo viene inserito qui -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Chiudi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal SCONTO PER PACMANNo -->
+    <!-- Add the audio element here -->
+
+    <div class="modal fade" id="PacManno" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">PacManno</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Chiudi"
+            ></button>
+          </div>
+          <!-- id pacman -->
+          <div class="modal-body" id="pacman" width="1200" height="800">
+            <div class="canvas-container">
+              <canvas id="gameCanvas" width="600" height="600"></canvas>
+
+              <audio id="backgroundMusic" loop>
+                <source src="tools/youGottaMove.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Chiudi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-white pt-5 pb-4" style="background-color: #0487e4">
+      <div class="container">
+        <div class="row">
+          <!-- Link utili -->
+          <div class="col-md-4 mb-4">
+            <h5>Link Utili</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="FAQ.html" class="text-white text-decoration-none"
+                  >FAQ</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >Termini e Condizioni</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="col-md-4 mb-4">
+            <h5>Iscriviti alla Newsletter</h5>
+            <form class="d-flex flex-column flex-sm-row">
+              <input
+                type="email"
+                class="form-control me-sm-2 mb-2 mb-sm-0"
+                placeholder="La tua email"
+              />
+              <button class="btn btn-light" type="submit">Invia</button>
+            </form>
+          </div>
+
+          <!-- Social media -->
+          <div class="col-md-4 mb-4">
+            <h5>Seguici</h5>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" class="text-white fs-5"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+        <!-- Sezione vuota o da rimuovere -->
+        <div>
+          <div class="row">
+            <div class="col-12 text-center mt-3"></div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center mt-4 border-top pt-3">
+          <small>© 2025 Agenzia Viaggi. Tutti i diritti riservati.</small>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      function calcolaPreventivo() {
+        const meta = document.getElementById("meta").value;
+        const numeroPersone = document.getElementById("persone").value;
+        const numeroGiorni = document.getElementById("giorni").value;
+        const prezzoPerNotte = getPrezzoPerCitta(meta);
+        console.log(meta);
+
+        if (meta === "" || numeroPersone === "" || numeroGiorni === "") {
+          console.log(meta);
+          window.alert("Campi mancanti o non completi");
+          return;
+        }
+
+        const preventivo = prezzoPerNotte * numeroGiorni * numeroPersone;
+
+        const testo =
+          "<p><strong>Destinazione:</strong> " +
+          meta +
+          "</p>" +
+          "<p><strong>Prezzo per notte:</strong> €" +
+          prezzoPerNotte +
+          "</p> " +
+          "<p><strong>Numero giorni:</strong> " +
+          numeroGiorni +
+          "</p> " +
+          "<p><strong>Numero persone:</strong> " +
+          numeroPersone +
+          " </p>" +
+          "<h5>Totale: €  " +
+          preventivo +
+          "</h5>";
+
+        document.getElementById("corpoModal").innerHTML = testo;
+
+        // crea un oggetto bootstrap modal e gli assegna l'elemento modal dall'html
+        const modal = new bootstrap.Modal(
+          document.getElementById("preventivoModal")
+        );
+
+        // mostra il modal nello schermo
+        modal.show();
+      }
+
+      function getPrezzoPerCitta(citta) {
+        switch (citta) {
+          case "Sorrento":
+            return 257;
+          case "Napoli":
+            return 150;
+          case "Caserta":
+            return 290;
+          case "Capri":
+            return 583;
+          case "Positano":
+            return 243;
+          case "Avellino":
+            return 96;
+          case "ischia":
+            return 295;
+          case "Benevento":
+            return 100;
+          case "Salerno":
+            return 150;
+          case "Cilento":
+            return 150;
+          case "Paestum":
+            return 120;
+          default:
+            return 0;
+        }
+      }
+
+      /* CODICE PACMAN */
+
+      // Tutto in un file perchè mi da un cazzo di errore CORS
+
+      const canvas = document.getElementById("gameCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // pacman, in questo caso George
+
+      const pacman = {
+        x: 50,
+        y: 50,
+        size: 30,
+        speed: 1,
+        direction: "right",
+      };
+
+
+      const keys = { w: false, a: false, s: false, d: false };
+
+      // i muri (con object collision)
+      const walls = [
+        // Outer boundary
+        { x: 0, y: 0, width: 600, height: 20 },
+        { x: 0, y: 580, width: 600, height: 20 },
+        { x: 0, y: 0, width: 20, height: 600 },
+        { x: 580, y: 0, width: 20, height: 600 },
+
+        //upper area
+        { x: 80, y: 80, width: 440, height: 40 },
+        { x: 80, y: 120, width: 40, height: 40 },
+        { x: 80, y: 200, width: 40, height: 100 },
+        { x: 480, y: 120, width: 40, height: 40 },
+
+        //middle area
+        { x: 180, y: 180, width: 40, height: 120 },
+        { x: 280, y: 180, width: 40, height: 120 },
+        { x: 380, y: 180, width: 40, height: 120 },
+
+        //bottom area
+        { x: 80, y: 340, width: 40, height: 120 },
+        { x: 120, y: 380, width: 100, height: 40 },
+
+        { x: 260, y: 380, width: 20, height: 40 },
+        { x: 280, y: 340, width: 40, height: 120 },
+        { x: 320, y: 380, width: 20, height: 40 },
+
+        { x: 380, y: 380, width: 200, height: 40 },
+        { x: 480, y: 380, width: 40, height: 160 },
+        { x: 480, y: 280, width: 40, height: 120 },
+        { x: 80, y: 500, width: 400, height: 40 },
+      ];
+
+      // IL CIBO, cambiare numberOfFoods per variare la quantità di palline sul campo
+      const foodSize = 20;
+      const numberOfFoods = 10;
+      const foods = [];
+      // Function to generate a valid position for food not overlapping walls
+      function getValidFoodPosition() {
+        let x, y;
+        let valid = false;
+        while (!valid) {
+          x = Math.random() * (canvas.width - foodSize);
+          y = Math.random() * (canvas.height - foodSize);
+          valid = true;
+          // Check against all walls
+          for (let wall of walls) {
+            if (
+              x + foodSize / 2 > wall.x &&
+              x - foodSize / 2 < wall.x + wall.width &&
+              y + foodSize / 2 > wall.y &&
+              y - foodSize / 2 < wall.y + wall.height
+            ) {
+              valid = false; // overlaps with a wall
+              break;
+            }
+          }
+        }
+        return { x, y };
+      }
+
+      // Generate initial foods
+      for (let i = 0; i < numberOfFoods; i++) {
+        const pos = getValidFoodPosition();
+        foods.push({ x: pos.x, y: pos.y, size: foodSize });
+      }
+
+      //SEZIONE COLLISIONE
+      function checkCollision() {
+        for (let wall of walls) {
+          // Check if Pac-Man's bounding box overlaps with wall
+          if (
+            pacman.x + pacman.size / 2 > wall.x &&
+            pacman.x - pacman.size / 2 < wall.x + wall.width &&
+            pacman.y + pacman.size / 2 > wall.y &&
+            pacman.y - pacman.size / 2 < wall.y + wall.height
+          ) {
+            // Collision detected, revert movement
+            if (keys.w) pacman.y += pacman.speed;
+            if (keys.s) pacman.y -= pacman.speed;
+            if (keys.a) pacman.x += pacman.speed;
+            if (keys.d) pacman.x -= pacman.speed;
+          }
+        }
+      }
+
+      // USO LO SCORE PER TERMINARE LA PARTITA (EX 1 PUNTO = 1 SCORE, 20 FOOD TOTALI, SCORE == 20 GAME IS OVER)
+      // ovviamente non può essere const
+
+      let score = 0;
+
+      // Detect collision with foods
+      function checkFoodCollision() {
+        for (let i = foods.length - 1; i >= 0; i--) {
+          const food = foods[i];
+          const dx = pacman.x - food.x;
+          const dy = pacman.y - food.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < pacman.size / 2 + food.size / 2) {
+            foods.splice(i, 1); // remove eaten food
+            score++;
+          }
+        }
+      }
+
+      // DRAWING SECTION
+      // Draw Pac-Man function
+
+      function drawPacman(ctx) {
+        ctx.beginPath();
+        ctx.arc(
+          pacman.x,
+          pacman.y,
+          pacman.size / 2,
+          0.2 * Math.PI,
+          1.8 * Math.PI
+        );
+        ctx.lineTo(pacman.x, pacman.y);
+        ctx.fillStyle = "yellow";
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      /*
+function drawPacman(ctx) {
+  if (pacman.img.complete) {
+    ctx.drawImage(
+      pacman.img,
+      pacman.x - pacman.size / 2,
+      pacman.y - pacman.size / 2,
+      pacman.size,
+      pacman.size
+    );
+  }
+}
+
+*/
+      // disegna i muri
+      function drawWalls() {
+        ctx.fillStyle = "green"; // Wall color
+        walls.forEach((wall) => {
+          ctx.fillRect(wall.x, wall.y, wall.width, wall.height);
+        });
+      }
+
+      // draw foods
+      function drawFoods() {
+        ctx.fillStyle = "orange"; // Or any color you prefer
+        foods.forEach((food) => {
+          ctx.beginPath();
+          ctx.arc(food.x, food.y, food.size / 2, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      //DRAW SCORE
+      function drawScore() {
+        ctx.fillStyle = "black";
+        ctx.font = "20px Arial";
+        ctx.fillText("Score: " + score, 10, 20);
+      }
+
+      // CONDIZIONE GAME OVER ( VITTORIA ) E GIOCA ANCORA
+      let gameOver = false;
+
+      //BOTTONE
+      let playAgain = {
+        x: 0,
+        y: 0,
+        width: 200,
+        height: 50,
+      };
+
+      function victory() {
+        if (foods.length === 0 && score >= 10) {
+          gameOver = true;
+        }
+
+        if (gameOver) {
+          ctx.font = "40px Arial";
+          ctx.textAlign = "center";
+
+          const message = "COD SCONTO: AFPS1234!";
+          const padding = 20;
+
+          // Measure the message text
+          const messageMetrics = ctx.measureText(message);
+          const messageWidth = messageMetrics.width;
+          const messageHeight = 40; // altezza del testo
+
+          // Dimensioni del rettangolo di sfondo
+          const rectX = canvas.width / 2 - (messageWidth + padding * 2) / 2;
+          const rectY = canvas.height / 2 - messageHeight / 2;
+          const rectWidth = messageWidth + padding * 2;
+          const rectHeight = messageHeight + padding * 2;
+
+          // Disegna sfondo semi-trasparente
+          ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+          ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
+
+          // Disegna il messaggio di vittoria
+          ctx.fillStyle = "white";
+          ctx.font = "40px Arial";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle"; // centrato verticalmente
+          ctx.fillText(message, canvas.width / 2, canvas.height / 2);
+        }
+      }
+
+      // Input event listeners
+      document.addEventListener("keydown", (e) => {
+        switch (e.key.toLowerCase()) {
+          case "w":
+            keys.w = true;
+            break;
+          case "a":
+            keys.a = true;
+            break;
+          case "s":
+            keys.s = true;
+            break;
+          case "d":
+            keys.d = true;
+            break;
+        }
+      });
+
+      document.addEventListener("keyup", (e) => {
+        switch (e.key.toLowerCase()) {
+          case "w":
+            keys.w = false;
+            break;
+          case "a":
+            keys.a = false;
+            break;
+          case "s":
+            keys.s = false;
+            break;
+          case "d":
+            keys.d = false;
+            break;
+        }
+      });
+
+      //MUSICA
+      const music = document.getElementById("backgroundMusic");
+
+      const modal = new bootstrap.Modal(document.getElementById("PacManno"));
+
+      // Game loop
+      function gameLoop() {
+        modal.show();
+        //condizione di vittoria
+        victory();
+
+        // non credo sia corretto metterlo qui, però non si ingrippa come fa su java
+        music.play();
+
+        if (gameOver) {
+          music.pause();
+          return;
+        }
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Movimento del nostro amico + collisione con il boundary
+        if (keys.w && pacman.y - pacman.size / 2 > 0) {
+          pacman.y -= pacman.speed;
+        }
+        if (keys.s && pacman.y + pacman.size / 2 < canvas.height) {
+          pacman.y += pacman.speed;
+        }
+        if (keys.a && pacman.x - pacman.size / 2 > 0) {
+          pacman.x -= pacman.speed;
+        }
+        if (keys.d && pacman.x + pacman.size / 2 < canvas.width) {
+          pacman.x += pacman.speed;
+        }
+        checkCollision();
+        checkFoodCollision();
+        drawWalls();
+        drawScore();
+        drawPacman(ctx);
+        drawFoods();
+        requestAnimationFrame(gameLoop);
+      }
+    </script>
+  </body>
+</html>

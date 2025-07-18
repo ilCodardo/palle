@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pacchetti Viaggio</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome -->
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      .card img {
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .rating {
+        color: gold;
+      }
+
+      .sfondofoto {
+        background-color: rgba(0, 0, 0, 0.7);
+        /* sfondo nero semitrasparente */
+        color: white;
+        font-size: 30px;
+        padding: 0.2em 0.5em;
+        display: inline-block;
+        border-radius: 5px;
+      }
+
+      .textImg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        z-index: 2;
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      .imageContainer {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+      }
+
+      .imageContainer img.sfondo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary"
+      style="
+        background-color: #0487e4 !important;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+      "
+      data-bs-theme="light"
+    >
+      <div class="container-fluid">
+        <img
+          src="images/logoNew.png"
+          alt="logo"
+          width="50"
+          height="50"
+          style="background: transparent"
+        />
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link text-white" href="home.html">Home</a>
+            <a class="nav-link text-white" href="Chi-Siamo.html">Chi siamo</a>
+            <a
+              class="nav-link active text-white"
+              aria-current="page"
+              href="Pacchetti-Viaggio.html"
+              >Pacchetti Viaggi</a
+            >
+            <a class="nav-link text-white" href="Offerte.html">Offerte</a>
+            <a class="nav-link text-white" href="destinazioni.html"
+              >Destinazioni</a
+            >
+            <a class="nav-link text-white" href="Preventivatore.html"
+              >Preventivatore</a
+            >
+            <a class="nav-link text-white" href="Contatti.html">Contatti</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="imageContainer" style="position: relative; width: 100%">
+      <img
+        class="sfondo"
+        src="images/paesaggi-campani.jpg"
+        alt="golfo del napoli"
+      />
+    </div>
+
+    <!-- CONTENUTO -->
+    <div class="container py-4">
+      <h1 class="text-center mb-4">I nostri Pacchetti Viaggio</h1>
+      <div class="d-flex justify-content-center gap-2 mb-4">
+        <button
+          onclick="ordinaPerPrezzo()"
+          class="btn btn-outline-primary"
+          id="sortPrezzo"
+        >
+          Ordina per Prezzo ↓
+        </button>
+        <button
+          onclick="ordinaPerDurata()"
+          class="btn btn-outline-secondary"
+          id="sortDurata"
+        >
+          Ordina per Durata ↓
+        </button>
+      </div>
+
+      <div id="pacchettiContainer" class="row">
+        <!-- Pacchetto 1 Sorrento -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <!-- CONTENITORE IMMAGINE -->
+            <div class="position-relative">
+              <img
+                src="images/Sorrento-1.jpeg"
+                class="card-img-top"
+                alt="Sorrento"
+              />
+              <button
+                class="btn btn-primary position-absolute top-50 start-50 translate-middle sfondofoto"
+                data-bs-toggle="modal"
+                data-bs-target="#modalMaldive"
+              >
+                Dettagli
+              </button>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Sorrento</h5>
+              <p class="card-text">
+                7 notti in resort 4 stelle, all inclusive.
+              </p>
+              <p><strong>Prezzo:</strong> €1800</p>
+              <p><strong>Durata:</strong> 7 giorni</p>
+              <p class="rating">★★★★★</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pacchetto 2 Napoli -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="position-relative">
+              <img
+                src="images/napoli-notte-hd-1600x600.jpg"
+                class="card-img-top"
+                alt="Napoli"
+              />
+              <button
+                class="btn btn-primary position-absolute top-50 start-50 translate-middle sfondofoto"
+                data-bs-toggle="modal"
+                data-bs-target="#modalParigi"
+              >
+                Dettagli
+              </button>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Weekend a Napoli</h5>
+              <p class="card-text">3 giorni in hotel con colazione inclusa.</p>
+              <p><strong>Prezzo:</strong> €450</p>
+              <p><strong>Durata:</strong> 3 giorni</p>
+              <p class="rating">★★★★☆</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pacchetto 3 -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="position-relative">
+              <img
+                src="images/caserta.webp"
+                class="card-img-top"
+                alt="Caserta"
+              />
+              <button
+                class="btn btn-primary position-absolute top-50 start-50 translate-middle sfondofoto"
+                data-bs-toggle="modal"
+                data-bs-target="#modalGiappone"
+              >
+                Dettagli
+              </button>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Tour di Caserta</h5>
+              <p class="card-text">
+                10 giorni tra Santa Maria Capua Vetere,Aversa e Villa Literno.
+              </p>
+              <p><strong>Prezzo:</strong> €2900</p>
+              <p><strong>Durata:</strong> 10 giorni</p>
+              <p class="rating">★★★★★</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- pachetto 4-->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <!-- CONTENITORE IMMAGINE -->
+            <div class="position-relative">
+              <img
+                src="images/pompei-città.avif"
+                class="card-img-top"
+                alt="pompei"
+              />
+              <button
+                class="btn btn-primary position-absolute top-50 start-50 translate-middle sfondofoto"
+                data-bs-toggle="modal"
+                data-bs-target="#modalPompei"
+              >
+                Dettagli
+              </button>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Pompei</h5>
+              <p class="card-text">
+                1 notte in resort 5 stelle con guida turistica.
+              </p>
+              <p><strong>Prezzo:</strong> €300</p>
+              <p><strong>Durata:</strong> 1 giorno</p>
+              <p class="rating">★★★★★</p>
+            </div>
+          </div>
+        </div>
+        <!-- pachetto 5-->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <!-- CONTENITORE IMMAGINE -->
+            <div class="position-relative">
+              <img
+                src="images/capri-città.jpg"
+                class="card-img-top"
+                alt="Capri"
+              />
+              <button
+                class="btn btn-primary position-absolute top-50 start-50 translate-middle sfondofoto"
+                data-bs-toggle="modal"
+                data-bs-target="#modalCapri"
+              >
+                Dettagli
+              </button>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Capri</h5>
+              <p class="card-text">
+                3 notti in resort 5 stelle, con degustazione e esplorazione
+                inclusa.
+              </p>
+              <p><strong>Prezzo:</strong> €1750</p>
+              <p><strong>Durata:</strong> 3 giorni</p>
+              <p class="rating">★★★★★</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <!-- CONTENITORE IMMAGINE -->
+            <div class="position-relative">
+              <img
+                src="images/positano.JPG"
+                class="card-img-top"
+                alt="Positano"
+              />
+              <button
+                class="btn btn-primary position-absolute top-50 start-50 translate-middle sfondofoto"
+                data-bs-toggle="modal"
+                data-bs-target="#modalPositano"
+              >
+                Dettagli
+              </button>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Positano</h5>
+              <p class="card-text">
+                7 notti in resort 3 stelle, all inclusive.
+              </p>
+              <p><strong>Prezzo:</strong> €1700</p>
+              <p><strong>Durata:</strong> 7 giorni</p>
+              <p class="rating">★★★☆☆</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modali dettagli pacchetti (restano uguali, li ometto qui per brevità, ma mantieni il tuo codice) -->
+    <!-- Sorrento -->
+    <div
+      class="modal fade"
+      id="modalMaldive"
+      tabindex="-1"
+      aria-labelledby="modalMaldiveLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalMaldiveLabel">
+              Dettagli: Sorrento
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Chiudi"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="images/limoni.sorrento.avif"
+              class="img-fluid mb-3"
+              alt="limoni"
+            />
+            <p>
+              Nella località di Sorrento, approfittando del nostro comodo
+              pacchetto, sarà possibile effettuare giri in barca sullo yacht
+              dell'hotel e degustare un'ampia selezione locale.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Napoli -->
+    <div
+      class="modal fade"
+      id="modalParigi"
+      tabindex="-1"
+      aria-labelledby="modalParigiLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalParigiLabel">Dettagli: Napoli</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Chiudi"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="images/museo-cristo-velato.jpg"
+              class="img-fluid mb-3"
+              alt="museo cristo"
+            />
+            <p>
+              in questi tre giorni in una delle capoluoghi più famosi d'italia
+              avremo modo di visitare varie località famose come la chiesa di
+              santa chiara,degustare piatti tipici nella ridente località di
+              piazza garibaldi e visitare musei alla scoperta di opere d'arte
+              come il cristo velato
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Caserta -->
+    <div
+      class="modal fade"
+      id="modalGiappone"
+      tabindex="-1"
+      aria-labelledby="modalGiapponeLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalGiapponeLabel">
+              Dettagli: Tour di caserta
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Chiudi"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="images/aversa-caserta.jpg"
+              class="img-fluid mb-3"
+              alt="Aversa"
+            />
+            <p>
+              Viaggio di gruppo, guida parlante italiano, hotel e trasferimenti
+              interni inclusi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modalPompei"
+      tabindex="-1"
+      aria-labelledby="modalPompeiLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalPompeiLabel">Dettagli: Pompei</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Chiudi"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="images/pompei-modal.jpg"
+              class="img-fluid mb-3"
+              alt="scavi"
+            />
+            <p>
+              Approfitta di questo pachetto incentrato sugli scavi e reperti
+              archeologici più famosi d'italia in questa giornata unica si
+              espoloreranno tutti gli scavi della città per poi passare una
+              notte in uno degli hotel più magici della zona situato in
+              prossimità del vesuvio
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modalCapri"
+      tabindex="-1"
+      aria-labelledby="modalCapriLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalCapriLabel">Dettagli: Capri</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Chiudi"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="images/cena-capri.jpg"
+              class="img-fluid mb-3"
+              alt="Cena"
+            />
+            <p>
+              Approfitta di queste 3 notti magiche per scoprire l'isola
+              partenopea per eccellenza e usare ogni giorno per mangiare piatti
+              tipici,scoprire lo stupendo mare di capri e vedere una realtà
+              cittadina isolata.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modalPositano"
+      tabindex="-1"
+      aria-labelledby="modalPositanoLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalPositanoLabel">
+              Dettagli: Positano
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Chiudi"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="images/costiera-amalfitana.jpg"
+              class="img-fluid mb-3"
+              alt="costa"
+            />
+            <p>
+              Fai una full immersion di una settimana e scopri la costiera
+              amalfitana in una delle località più luxury della campania
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="text-white pt-5 pb-4" style="background-color: #0487e4">
+      <div class="container">
+        <div class="row">
+          <!-- Link utili -->
+          <div class="col-md-4 mb-4">
+            <h5>Link Utili</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="FAQ.html" class="text-white text-decoration-none"
+                  >FAQ</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >Termini e Condizioni</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="col-md-4 mb-4">
+            <h5>Iscriviti alla Newsletter</h5>
+            <form class="d-flex flex-column flex-sm-row">
+              <input
+                type="email"
+                class="form-control me-sm-2 mb-2 mb-sm-0"
+                placeholder="La tua email"
+              />
+              <button class="btn btn-light" type="submit">Invia</button>
+            </form>
+          </div>
+
+          <!-- Social media -->
+          <div class="col-md-4 mb-4">
+            <h5>Seguici</h5>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="text-white me-3 fs-5"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" class="text-white fs-5"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+        <!-- Sezione vuota o da rimuovere -->
+        <div>
+          <div class="row">
+            <div class="col-12 text-center mt-3"></div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center mt-4 border-top pt-3">
+          <small>© 2025 Agenzia Viaggi. Tutti i diritti riservati.</small>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Variabili globali per memorizzare l'ordine originale delle card
+      const container = document.getElementById("pacchettiContainer");
+      const originalCards = Array.from(container.children);
+
+      let ordinePrezzoDecrescente = false;
+      let ordineDurataDecrescente = false;
+
+      function estraiNumeroDaTesto(testo, prefisso) {
+        const match = testo.match(new RegExp(prefisso + "\\s*€?(\\d+)", "i"));
+        return match ? parseInt(match[1]) : 0;
+      }
+
+      function estraiGiorni(testo) {
+        const match = testo.match(/(\d+)\s*giorn/i);
+        return match ? parseInt(match[1]) : 0;
+      }
+
+      function ordinaPerPrezzo() {
+        if (!ordinePrezzoDecrescente) {
+          // Ordina decrescente per prezzo
+          const cards = Array.from(container.children);
+          cards.sort((a, b) => {
+            const prezzoA = estraiNumeroDaTesto(a.innerText, "Prezzo:");
+            const prezzoB = estraiNumeroDaTesto(b.innerText, "Prezzo:");
+            return prezzoB - prezzoA;
+          });
+          container.innerHTML = "";
+          cards.forEach((card) => container.appendChild(card));
+          ordinePrezzoDecrescente = true;
+        } else {
+          // Ripristina ordine originale
+          container.innerHTML = "";
+          originalCards.forEach((card) => container.appendChild(card));
+          ordinePrezzoDecrescente = false;
+        }
+        // Resetta l'altro toggle per non creare conflitti
+        ordineDurataDecrescente = false;
+      }
+
+      function ordinaPerDurata() {
+        if (!ordineDurataDecrescente) {
+          // Ordina decrescente per durata
+          const cards = Array.from(container.children);
+          cards.sort((a, b) => {
+            const durataA = estraiGiorni(a.innerText);
+            const durataB = estraiGiorni(b.innerText);
+            return durataB - durataA;
+          });
+          container.innerHTML = "";
+          cards.forEach((card) => container.appendChild(card));
+          ordineDurataDecrescente = true;
+        } else {
+          // Ripristina ordine originale
+          container.innerHTML = "";
+          originalCards.forEach((card) => container.appendChild(card));
+          ordineDurataDecrescente = false;
+        }
+        // Resetta l'altro toggle per non creare conflitti
+        ordinePrezzoDecrescente = false;
+      }
+    </script>
+  </body>
+</html>
